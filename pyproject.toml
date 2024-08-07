@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tasks"
+version = "0.0.1"
+dependencies = [
+    "typer"
+]
+
+[project.scripts]
+tasks = "tasks.cli.main:app"
