@@ -9,5 +9,8 @@ dependencies = [
     "typer"
 ]
 
+[project.optional-dependencies]
+tui = ["textual"]
+
 [project.scripts]
 tasks = "tasks.cli.main:app"
