@@ -55,5 +55,6 @@ class EditScreen(ModalScreen[Task]):
 
 
     def action_escape(self) -> None:
+        # TODO: Potentially 'esc' should cancel the creation?
         self._update_task()
         self.dismiss(self.__task)

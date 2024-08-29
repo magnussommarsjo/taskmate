@@ -33,6 +33,7 @@ class TaskApp(App):
         ("n", "new", "New"),
         ("e", "edit", "Edit"),
         ("r", "remove", "Remove"),
+        ("s", "save", "Save All"),
         ("c", "config", "Config"),
     ]
 
@@ -70,6 +71,15 @@ class TaskApp(App):
         task_widget = list_view.highlighted_child.query_one(TaskWidget)
 
         self.push_screen(EditScreen(task_widget.get_task()), task_widget.set_task) # TODO: Send whole task widget?
+
+    def action_save(self) -> None:
+        """Saves tasks to disk"""
+        tasks = []
+        for taskwidget in self.query(TaskWidget):
+            tasks.append(taskwidget.get_task())
+        
+        _write_tasks(tasks)
+        # TODO: Notification of sucess?
 
     def action_remove(self) -> None:
         """Removes the selected task"""
