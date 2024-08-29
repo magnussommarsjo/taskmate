@@ -1,4 +1,5 @@
 import sys
+from textual import work
 from textual.app import App, ComposeResult
 from textual.containers import VerticalScroll
 from textual.widgets import Header, Footer, Static, Checkbox, Label, ListView, ListItem
@@ -66,19 +67,19 @@ class TaskApp(App):
         # TODO: Should we save here as well?
         sys.exit()
 
-    def action_new(self) -> None:
+    @work
+    async def action_new(self) -> None:
         """Adds a new task and directly opens it for editing"""
         list_view = self.query_one(ListView)
         task_widget = TaskWidget(Task.new(""))
         list_item = ListItem(task_widget)
 
-        self.push_screen(EditScreen(task_widget.get_task(), task_widget.set_task))
+        # Requires @work and await to make sure that we get results before processing
+        await self.push_screen_wait(EditScreen(task_widget.get_task(), task_widget.set_task))
 
         list_view.append(list_item)
         list_view.index = len(list_view) - 1  # Highlight created
         list_item.scroll_visible()  # FIXME: Scrolls from top every time...
-        # FIXME: ListItem is not refreshed after updates from edit screen
-        # list_item.refresh(recompose=True) # Wont work
 
     def action_edit(self) -> None:
         """Opens a new window for editing the selected task"""
