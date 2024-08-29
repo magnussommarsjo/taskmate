@@ -1,13 +1,13 @@
 import sys
 from textual import work
 from textual.app import App, ComposeResult
-from textual.containers import VerticalScroll
-from textual.widgets import Header, Footer, Static, Checkbox, Label, ListView, ListItem
+from textual.widgets import Header, Footer, ListView, ListItem
 
 from tasks.models import Task
 from tasks import config, storage
 
 from tasks.tui.edit import EditScreen
+from tasks.tui.taskwidget import TaskWidget
 
 
 # TODO: Move get and write tasks to a more centralised location together with cli functions.
@@ -25,23 +25,6 @@ def _write_tasks(tasks: list[Task]) -> None:
         storage.tasks_to_json(conf.storage_path, tasks)
     else:
         NotImplementedError(f"Storage type '{conf.storage_type}' is not supported")
-
-
-class TaskWidget(Static):
-    def __init__(self, task: Task) -> None:
-        super().__init__()
-        self.__task = task  # Note: attribute 'task' seems to be already taken
-
-    def compose(self) -> ComposeResult:
-        yield Checkbox(value=self.__task.done)
-        yield Label(self.__task.name)
-    
-    def get_task(self) -> Task:
-        return self.__task
-    
-    def set_task(self, task: Task) -> None:
-        self.__task = task
-        self.refresh(recompose=True)  # TODO: Can we avoid recompose? Reactive params?
 
 
 class TaskApp(App):
@@ -79,7 +62,7 @@ class TaskApp(App):
 
         list_view.append(list_item)
         list_view.index = len(list_view) - 1  # Highlight created
-        list_item.scroll_visible()  # FIXME: Scrolls from top every time...
+        list_item.scroll_visible()  # FIXME: Does not scroll any longer
 
     def action_edit(self) -> None:
         """Opens a new window for editing the selected task"""

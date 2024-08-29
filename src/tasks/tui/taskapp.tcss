@@ -1,8 +1,7 @@
 TaskWidget {
     layout: horizontal;
     background: $boost;
-    /* height: 3; */
-    margin: 1;
+    height: 1;
 }
 
 TaskWidget Checkbox {
@@ -12,17 +11,27 @@ TaskWidget Checkbox {
     border: none;
 }
 
+
+# EDIT SCREEN ===============
 EditScreen {
     align: center middle;
 }
 
 EditScreen #dialog {
-    grid-size: 2;
-    grid-gutter: 1 2;
-    grid-rows: 1fr 3;
     padding: 0 1;
     width: 80%;
-    height: 11;
+    height: 8;
     border: thick $background 80%;
-    background: $surface;
+    # background: $surface;
+}
+
+EditScreen Input {
+    border: none;
+    height: 1;
+}
+EditScreen Checkbox {
+    /* Make checkbox only use single row height */
+    padding: 0;
+    height: 1;
+    border: none;
 }
