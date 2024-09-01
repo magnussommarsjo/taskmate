@@ -1,0 +1,37 @@
+TaskWidget {
+    layout: horizontal;
+    background: $boost;
+    height: 1;
+}
+
+TaskWidget Checkbox {
+    /* Make checkbox only use single row height */
+    padding: 0;
+    height: 1;
+    border: none;
+}
+
+
+# EDIT SCREEN ===============
+EditScreen {
+    align: center middle;
+}
+
+EditScreen #dialog {
+    padding: 0 1;
+    width: 80%;
+    height: 8;
+    border: thick $background 80%;
+    # background: $surface;
+}
+
+EditScreen Input {
+    border: none;
+    height: 1;
+}
+EditScreen Checkbox {
+    /* Make checkbox only use single row height */
+    padding: 0;
+    height: 1;
+    border: none;
+}
