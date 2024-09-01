@@ -14,12 +14,13 @@ classifiers = [
     "Operating System :: OS Independent",
     "Environment :: Console",
 ]
-requires-python = ">=3.12"
+requires-python = ">=3.10"
 dependencies = ["textual"]
 
 [project.optional-dependencies]
 lint = ["ruff~=0.6.3"]
-dev = ["pytest", "pre-commit", "taskmate[lint]"]
+test = ["pytest"]
+dev = ["pre-commit", "taskmate[lint,test]"]
 
 [project.urls]
 "Homepage" = "https://github.com/magnussommarsjo/taskmate"
