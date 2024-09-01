@@ -33,14 +33,16 @@ class EditScreen(ModalScreen[Task]):
                 yield Input(value=self.__task.name, id="name")
             with Horizontal():
                 yield Label("Priority:")
-                yield Input(value=str(self.__task.priority), id="priority", type="integer")
+                yield Input(
+                    value=str(self.__task.priority), id="priority", type="integer"
+                )
             with Horizontal():
                 yield Label("Description:")
                 yield Input(value=self.__task.description, id="description")
 
-            # TODO: Add more content 
+            # TODO: Add more content
             yield Footer()
-    
+
     def _update_task(self) -> None:
         done_checkbox = self.query_one("#done", Checkbox)
         name_input = self.query_one("#name", Input)
@@ -51,8 +53,6 @@ class EditScreen(ModalScreen[Task]):
         self.__task.done = done_checkbox.value
         self.__task.priority = int(priority_input.value)
         self.__task.description = description_input.value
-
-
 
     def action_escape(self) -> None:
         # TODO: Potentially 'esc' should cancel the creation?

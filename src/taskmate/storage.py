@@ -13,7 +13,8 @@ class _TaskJSONEncoder(json.JSONEncoder):
             return asdict(Task)
 
         return super().default(o)
-    
+
+
 class _DatetimeJSONDecoder(json.JSONDecoder):
     def __init__(self, *args, **kwargs):
         json.JSONDecoder.__init__(self, object_hook=self.object_hook, *args, **kwargs)
@@ -24,7 +25,7 @@ class _DatetimeJSONDecoder(json.JSONDecoder):
                 try:
                     source[k] = datetime.fromisoformat(str(v))
                 except ValueError:
-                    # Here we assume that 
+                    # Here we assume that
                     pass
         return source
 
@@ -32,7 +33,7 @@ class _DatetimeJSONDecoder(json.JSONDecoder):
 def tasks_from_json(path: str) -> list[Task]:
     if not Path(path).exists():
         return []
-    
+
     with open(path, "r") as file:
         data = json.load(file, cls=_DatetimeJSONDecoder)
 
