@@ -83,12 +83,8 @@ class TaskApp(App):
     def action_remove(self) -> None:
         """Removes the selected task"""
         list_view = self.query_one(ListView)
-        idx = list_view.index
         if list_view.highlighted_child:
             list_view.highlighted_child.remove()
-
-        # TODO: Below we try to reactivate highlightning for closest item but doesnt work
-        list_view.index = idx if 0 <= idx < len(list_view) else len(list_view) - 1
 
         # TODO: Removes even if nothing is highlighted...
         # since it doesnt update visuals after removal.
