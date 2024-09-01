@@ -34,10 +34,8 @@ class TaskApp(App):
         ("e", "edit", "Edit"),
         ("r", "remove", "Remove"),
         ("s", "save", "Save All"),
-        ("c", "config", "Config"),
+        # ("c", "config", "Config"),
     ]
-
-    # SCREENS = {"edit_screen": EditScreen}
 
     CSS_PATH = "taskapp.tcss"
 
