@@ -1,7 +1,9 @@
-name: CI
-on: push
+name: CI Linting
+on:
+  pull_request:
+    branches: [ "main" ]
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
