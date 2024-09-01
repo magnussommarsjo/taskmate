@@ -1,4 +1,4 @@
-from tasks.models import Task
+from taskmate.models import Task
 from dataclasses import asdict
 from datetime import datetime
 import json

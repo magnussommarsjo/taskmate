@@ -1,7 +1,7 @@
 from textual.app import ComposeResult
 from textual.widgets import Static, Checkbox, Label
 
-from tasks.models import Task
+from taskmate.models import Task
 
 
 

@@ -5,7 +5,7 @@ from textual.screen import ModalScreen
 from textual.widgets import Header, Footer, Input, Label, Checkbox
 from textual.containers import Vertical, Horizontal
 
-from tasks.models import Task
+from taskmate.models import Task
 
 
 class EditScreen(ModalScreen[Task]):

@@ -1,3 +1,3 @@
-# Tasks
+# Task Mate
 
-Simple cli application for creating and list tasks.
+Simple Terminal User Interface application for creating and list tasks.

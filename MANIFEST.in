@@ -1,1 +1,1 @@
-include src/tasks/tui/*.tcss
+include src/taskmate/tui/*.tcss
