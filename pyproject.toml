@@ -3,11 +3,11 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tasks"
+name = "taskmate"
 version = "0.1.0"
 dependencies = [
     "textual"
 ]
 
 [project.scripts]
-tasks = "tasks.tui.main:main"
+tm = "taskmate.tui.main:main"

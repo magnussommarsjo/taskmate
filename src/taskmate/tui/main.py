@@ -4,11 +4,11 @@ from textual import work
 from textual.app import App, ComposeResult
 from textual.widgets import Header, Footer, ListView, ListItem
 
-from tasks.models import Task
-from tasks import config, storage
+from taskmate.models import Task
+from taskmate import config, storage
 
-from tasks.tui.edit import EditScreen
-from tasks.tui.taskwidget import TaskWidget
+from taskmate.tui.edit import EditScreen
+from taskmate.tui.taskwidget import TaskWidget
 
 
 # TODO: Move get and write tasks to a more centralised location together with cli functions.

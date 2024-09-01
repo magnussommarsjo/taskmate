@@ -2,8 +2,8 @@ from datetime import datetime
 from pathlib import Path
 import pytest
 
-from tasks.models import Task
-from tasks.storage import tasks_from_json, tasks_to_json
+from taskmate.models import Task
+from taskmate.storage import tasks_from_json, tasks_to_json
 
 
 @pytest.fixture
