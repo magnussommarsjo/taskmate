@@ -4,13 +4,10 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tasks"
-version = "0.0.1"
+version = "0.1.0"
 dependencies = [
-    "typer"
+    "textual"
 ]
 
-[project.optional-dependencies]
-tui = ["textual"]
-
 [project.scripts]
-tasks = "tasks.cli.main:app"
+tasks = "tasks.tui.main:main"
