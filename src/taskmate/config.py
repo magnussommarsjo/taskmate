@@ -2,7 +2,7 @@ from dataclasses import dataclass, asdict
 from pathlib import Path
 import json
 
-APP_PATH = Path.home() / "tasks"
+APP_PATH = Path.home() / "taskmate"
 CONFIG_PATH = APP_PATH / "config.json"
 
 
