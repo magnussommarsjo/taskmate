@@ -16,7 +16,7 @@ def tasks() -> list[Task]:
             description="description",
             created=datetime.now(),
             finished=None,
-            due=None
+            due=None,
         ),
         Task(
             name="task_2",
@@ -25,7 +25,7 @@ def tasks() -> list[Task]:
             description="description",
             created=datetime.now(),
             finished=None,
-            due=None
+            due=None,
         ),
     ]
 

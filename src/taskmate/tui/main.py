@@ -58,7 +58,9 @@ class TaskApp(App):
         list_item = ListItem(task_widget)
 
         # Requires @work and await to make sure that we get results before processing
-        await self.push_screen_wait(EditScreen(task_widget.get_task(), task_widget.set_task))
+        await self.push_screen_wait(
+            EditScreen(task_widget.get_task(), task_widget.set_task)
+        )
 
         list_view.append(list_item)
         list_view.index = len(list_view) - 1  # Highlight created
@@ -69,14 +71,16 @@ class TaskApp(App):
         list_view = self.query_one(ListView)
         task_widget = list_view.highlighted_child.query_one(TaskWidget)
 
-        self.push_screen(EditScreen(task_widget.get_task()), task_widget.set_task) # TODO: Send whole task widget?
+        self.push_screen(
+            EditScreen(task_widget.get_task()), task_widget.set_task
+        )  # TODO: Send whole task widget?
 
     def action_save(self) -> None:
         """Saves tasks to disk"""
         tasks = []
         for taskwidget in self.query(TaskWidget):
             tasks.append(taskwidget.get_task())
-        
+
         _write_tasks(tasks)
         # TODO: Notification of sucess?
 
