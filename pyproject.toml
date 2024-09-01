@@ -5,9 +5,23 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "taskmate"
 version = "0.1.0"
-dependencies = [
-    "textual"
+readme = "README.md"
+authors = [
+    { name="Magnus Sommarsjö"}
 ]
+description = "Simple TUI for task management"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Environment :: Console",
+]
+requires-python = ">=3.12"
+dependencies = ["textual"]
+
+[project.urls]
+"Homepage" = "https://github.com/magnussommarsjo/taskmate"
+"Bug Tracker" = "https://github.com/magnussommarsjo/taskmate/issues"
 
 [project.scripts]
 tm = "taskmate.tui.main:main"
