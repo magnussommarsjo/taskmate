@@ -6,9 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "taskmate"
 version = "0.1.1"
 readme = "README.md"
-authors = [
-    { name="Magnus Sommarsjö"}
-]
+authors = [{ name = "Magnus Sommarsjö" }]
 description = "Simple TUI for task management"
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -18,6 +16,10 @@ classifiers = [
 ]
 requires-python = ">=3.12"
 dependencies = ["textual"]
+
+[project.optional-dependencies]
+lint = ["ruff~=0.6.3"]
+dev = ["pytest", "pre-commit", "taskmate[lint]"]
 
 [project.urls]
 "Homepage" = "https://github.com/magnussommarsjo/taskmate"
