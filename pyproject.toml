@@ -19,7 +19,7 @@ dependencies = ["textual", "typing-extensions>=4.0"]
 
 [project.optional-dependencies]
 lint = ["ruff~=0.6.3"]
-test = ["pytest"]
+test = ["pytest", "pytest-asyncio"]
 dev = ["pre-commit", "taskmate[lint,test]", "tox>=4.0", "textual-dev"]
 
 [project.urls]
@@ -28,3 +28,6 @@ dev = ["pre-commit", "taskmate[lint,test]", "tox>=4.0", "textual-dev"]
 
 [project.scripts]
 tm = "taskmate.tui.main:main"
+
+[tool.pytest.ini_options]
+asyncio_default_fixture_loop_scope = "function"
