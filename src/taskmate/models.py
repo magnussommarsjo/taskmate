@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import datetime
-from typing import Optional, Self
+from typing import Optional
+from typing_extensions import Self
 
 # Note:
 # 'Task' to define what to do
