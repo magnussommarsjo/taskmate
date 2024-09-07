@@ -13,11 +13,10 @@ from taskmate.tui.taskwidget import TaskWidget
 
 class TaskApp(App):
     BINDINGS = [
-        ("q", "quit", "Quit"),
+        ("q", "quit", "Save & Quit"),
         ("n", "new", "New"),
         ("e", "edit", "Edit"),
         ("r", "remove", "Remove"),
-        ("s", "save", "Save All"),
         # ("c", "config", "Config"),
     ]
 
@@ -30,8 +29,8 @@ class TaskApp(App):
         yield Footer()
 
     def action_quit(self) -> None:
-        # TODO: Should we save here as well?
-        sys.exit()
+        self._save()
+        self.exit()
 
     @work
     async def action_new(self) -> None:
@@ -58,14 +57,13 @@ class TaskApp(App):
             EditScreen(task_widget.get_task()), task_widget.set_task
         )  # TODO: Send whole task widget?
 
-    def action_save(self) -> None:
+    def _save(self) -> None:
         """Saves tasks to disk"""
         tasks = []
         for taskwidget in self.query(TaskWidget):
             tasks.append(taskwidget.get_task())
 
         storage.write_tasks(tasks)
-        # TODO: Notification of sucess?
 
     def action_remove(self) -> None:
         """Removes the selected task"""
