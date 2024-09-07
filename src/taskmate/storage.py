@@ -1,4 +1,6 @@
-from taskmate.models import Task
+from .models import Task
+from .config import read_config
+
 from dataclasses import asdict
 from datetime import datetime
 import json
@@ -45,3 +47,19 @@ def tasks_to_json(path: str, tasks: list[Task]) -> None:
 
     with open(path, "w") as file:
         json.dump(data, file, cls=_TaskJSONEncoder)
+
+
+def get_tasks() -> list[Task]:
+    conf = read_config()
+    if conf.storage_type == "json":
+        return tasks_from_json(conf.storage_path)
+    else:
+        NotImplementedError(f"Storage type '{conf.storage_type}' is not supported")
+
+
+def write_tasks(tasks: list[Task]) -> None:
+    conf = read_config()
+    if conf.storage_type == "json":
+        tasks_to_json(conf.storage_path, tasks)
+    else:
+        NotImplementedError(f"Storage type '{conf.storage_type}' is not supported")
