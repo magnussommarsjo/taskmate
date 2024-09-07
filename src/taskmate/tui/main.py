@@ -1,6 +1,6 @@
 import sys
 
-from .task_app import TaskApp
+from taskmate.tui.task_app import TaskApp
 
 
 def main() -> int:
